@@ -64,6 +64,10 @@ public class Main extends Application {
 		Menu menu = new Menu("Options");
 		// add menu item(s) to menu
 		menu.getItems().addAll(exitMI);
+		// create menu bar
+		menuBar = new MenuBar();
+		// add menu to menu bar
+		menuBar.getMenus().addAll(menu);
 		// create menu listener
 		MenuItemListener menuListener = new MenuItemListener();
 		// add the menu listener to the menu item(s)
