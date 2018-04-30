@@ -7,14 +7,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import model.Graph;
 
-public class MainView extends BorderPane implements Observer {
+public class DijsktraView extends BorderPane implements Observer {
 
 	// model variable(s)
 	private Graph theGraph;
 	// view variable(s)
 	private GridPane gp;
 	// static variable(s)
-	public static final int width = 300;
+	public static final int width = 500;
 	public static final int height = 400;
 	
 	@Override
@@ -24,7 +24,7 @@ public class MainView extends BorderPane implements Observer {
 	}
 	
 	// constructor 
-	public MainView (Graph g) {
+	public DijsktraView (Graph g) {
 		// set the graph
 		theGraph = g;
 		// init grid pane
