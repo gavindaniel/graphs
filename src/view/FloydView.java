@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import model.Graph;
 
-public class DijsktraView extends BorderPane implements Observer {
+public class FloydView extends BorderPane implements Observer {
 
 	// model variable(s)
 	private Graph theGraph;
@@ -33,7 +33,7 @@ public class DijsktraView extends BorderPane implements Observer {
 	}
 	
 	// constructor 
-	public DijsktraView (Graph g) {
+	public FloydView (Graph g) {
 		// set the graph
 		theGraph = g;
 		// init grid pane
@@ -55,7 +55,7 @@ public class DijsktraView extends BorderPane implements Observer {
 		// make the input text field editable
 		textField.setEditable(true);
 		// create response text
-		functionHeader = new Label("Dijsktra's Shortest Path");
+		functionHeader = new Label("Floyd-Marshall Shortest Path");
 		responseText = new Label("Enter a Vertex Number to start from");
 		// set grid pane width & height
 		gp.setPrefSize(width, height);
@@ -86,7 +86,7 @@ public class DijsktraView extends BorderPane implements Observer {
 			
 			if (!text.isEmpty() && (Integer.parseInt(text) < 11 && Integer.parseInt(text) > 0)) {
 				
-				responseText.setText("Dijsktra's Shortest Path for Vertex " + text + " -> "); //+ theGraph.DFS(Integer.parseInt(text)));
+				responseText.setText("Floyd-Marshall Shortest Path for Vertex " + text + " -> "); //+ theGraph.DFS(Integer.parseInt(text)));
 				
 			} else {
 				responseText.setText("Please enter a valid vertex number");

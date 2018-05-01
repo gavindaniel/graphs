@@ -8,11 +8,11 @@ public class Graph extends Observable {
 	public static final int size = 10;	// # of MAX vertices 
 	// variable(s)
 	private Vertex root;			// root vertex of the graph
-	private int numVertices;		// number of vetices in the graph (or current size of graph)
+	private int numVertices;		// number of vertices in the graph (or current size of graph)
 	private Vertex[] vertices;	// vertices in the graph
+	
 	// constructor 
 	public Graph() {
-		// TODO: add any construction code
 		root = new Vertex();
 		numVertices = 0;
 		vertices = new Vertex[0];
@@ -22,9 +22,11 @@ public class Graph extends Observable {
 	public int getSize() {	return size;		}
 	public Vertex getRoot() {	return root;		}
 	public int getNumVertices() {	return numVertices;		}
+	public Vertex[] getVertices() {	return vertices;	}
 	// setters
 	public void setRoot(Vertex r) {		root = r;	}
 	public void setNumVertices(int n) {	numVertices = n;		}
+	
 	// array functions
 	public void add(Vertex v) {
 		Vertex[] tempV = vertices;
@@ -36,94 +38,83 @@ public class Graph extends Observable {
 		this.setNumVertices(vertices.length);
 	}
 	
-	// search functions
 	
-	// breadth first search
-	public String BFS(int startV) {
-		String result = "";
-		boolean[] visited = new boolean[size];
-		Vertex[] stack = new Vertex[0];
-		result = search_BFS(vertices[startV-1], stack, visited, result);
-		return result;
-	}
-	
-	public String search_BFS(Vertex v, Vertex[] stack, boolean[] visited, String result) {
-		String out = "";
-		visited[v.getVertexNumber()-1] = true;
-		System.out.print(v.getVertexNumber() + " ");
-		result += v.getVertexNumber() + " ";
+	public static Graph graph1() {
+		Graph g = new Graph();
+		// init vertices 
+		Vertex v1 = new Vertex(1);
+		Vertex v2 = new Vertex(2);
+		Vertex v3 = new Vertex(3);
+		Vertex v4 = new Vertex(4);
+		Vertex v5 = new Vertex(5);
+		Vertex v6 = new Vertex(6);
+		Vertex v7 = new Vertex(7);
+		Vertex v8 = new Vertex(8);
+		Vertex v9 = new Vertex(9);
+		Vertex v10 = new Vertex(10);
+		// init edges 
+//		Edge e1 = new Edge(v1, v2, 1);
+//		v1.addEdge(e1);
 		
-		Vertex[] adjV = v.getAdjacentVertices();
-		Vertex[] temp = stack;
-//		stack = new Vertex[stack.length + adjV.length];
-//		for (int i = 0; i < temp.length; i++) {
-//			stack[i] = temp[i];
-//		}
-		for (int i = 0; i < adjV.length; i++) {
-//			Vertex[] temp = stack;
-			boolean flag = false;
-			for (int j = 0; j < temp.length; j++) {
-				if (adjV[i].getVertexNumber() == temp[j].getVertexNumber())
-					flag = true;
-			}
-			if (!flag) {
-				temp = stack;
-				stack = new Vertex[stack.length + 1];
-				for (int k = 0; k < temp.length; k++) {
-					stack[k] = temp[k];
-				}
-				stack[temp.length] = adjV[i];
-			}
-		}
-		boolean done = true;
-		for (int i = 0; i < visited.length; i++) {
-			if (visited[i] == false) {
-				done = false;
-			}
-		}
+		// vertex 1 adjacent
+		v1.addAdjacentVertex(v2);
+		v1.addAdjacentVertex(v3);
+		v1.addAdjacentVertex(v4);
+		// vertex 2 adjacent
+		v2.addAdjacentVertex(v1);
+		v2.addAdjacentVertex(v3);
+		v2.addAdjacentVertex(v4);
+		// vertex 3 adjacent
+		v3.addAdjacentVertex(v1);
+		v3.addAdjacentVertex(v2);
+		v3.addAdjacentVertex(v4);
+//		v3.addAdjacentVertex(v5);
+		// vertex 4 adjacent
+		v4.addAdjacentVertex(v1);
+		v4.addAdjacentVertex(v2);
+		v4.addAdjacentVertex(v3);
+		v4.addAdjacentVertex(v6);
+		// vertex 5 adjacent
+		v5.addAdjacentVertex(v6);
+		v5.addAdjacentVertex(v7);
+		v5.addAdjacentVertex(v8);
+//		v5.addAdjacentVertex(v3);
+		// vertex 6 adjacent
+		v6.addAdjacentVertex(v4);
+		v6.addAdjacentVertex(v5);
+		v6.addAdjacentVertex(v7);
+		// vertex 7 adjacent
+		v7.addAdjacentVertex(v5);
+		v7.addAdjacentVertex(v6);
+		v7.addAdjacentVertex(v8);
+		// vertex 8 adjacent
+		v8.addAdjacentVertex(v5);
+		v8.addAdjacentVertex(v7);
+		v8.addAdjacentVertex(v10);
+		// vertex 9 adjacent
+		v9.addAdjacentVertex(v8);
+		v9.addAdjacentVertex(v10);
+		// vertex 10 adjacent
+		v10.addAdjacentVertex(v8);
+		v10.addAdjacentVertex(v9);
 		
-		if (!done && stack.length > 0)
-			for (int i = 0; i < stack.length; i++) {
-				if (!visited[stack[i].getVertexNumber()-1])
-					out = search_BFS(stack[i], stack, visited, result);
-			}
-		else if (done)
-			out = result;
 		
-		return out;
-	}
-	
-	
-	// depth first search
-	public String DFS(int startV) {
-		String result = "";
-		boolean[] visited = new boolean[size];
+		g.add(v1);
+		g.add(v2);
+		g.add(v3);
+		g.add(v4);
+		g.add(v5);
+		g.add(v6);
+		g.add(v7);
+		g.add(v8);
+		g.add(v9);
+		g.add(v10);
+		// set root of graph
+		g.setRoot(v1);
+		// add vertices to graph
 		
-		result = search_DFS(vertices[startV-1], visited, result);
-		return result;
-	}
-	
-	public String search_DFS(Vertex v, boolean[] visited, String result) {
-		String out = "";
-		// mark the current node as visited
-		visited[v.getVertexNumber()-1] = true;
-		System.out.print(v.getVertexNumber() + " ");
-		result += v.getVertexNumber() + " ";
 		
-		boolean done = true;
-		for (int j = 0; j < visited.length; j++) {
-			if (visited[j] == false)
-				done = false;
-		}
-		if (!done) {
-			Vertex[] adjacentV = v.getAdjacentVertices();
-			for (int i = 0; i < adjacentV.length; i++) {
-					if (!visited[adjacentV[i].getVertexNumber()-1]) // the vertex has not been visited
-						out = search_DFS(adjacentV[i], visited, result);
-			}
-		}
-		else if (done)
-			out = result;
-		return out;
+		return g;
+		
 	}
 }
