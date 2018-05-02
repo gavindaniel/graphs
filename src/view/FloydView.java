@@ -23,7 +23,7 @@ public class FloydView extends BorderPane implements Observer {
 	private Label responseText;
 	private Label functionHeader;
 	// static variable(s)
-	public static final int width = 500;
+	public static final int width = 800;
 	public static final int height = 400;
 	
 	@Override

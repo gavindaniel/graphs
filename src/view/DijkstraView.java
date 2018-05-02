@@ -10,12 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import model.Dijkstra;
 import model.Graph;
 
-public class DijsktraView extends BorderPane implements Observer {
+public class DijkstraView extends BorderPane implements Observer {
 
 	// model variable(s)
 	private Graph theGraph;
+	private Dijkstra dijsktra;
 	// view variable(s)
 	private GridPane gp;
 	private Button button;
@@ -23,7 +25,7 @@ public class DijsktraView extends BorderPane implements Observer {
 	private Label responseText;
 	private Label functionHeader;
 	// static variable(s)
-	public static final int width = 500;
+	public static final int width = 800;
 	public static final int height = 400;
 	
 	@Override
@@ -33,9 +35,10 @@ public class DijsktraView extends BorderPane implements Observer {
 	}
 	
 	// constructor 
-	public DijsktraView (Graph g) {
+	public DijkstraView (Graph g) {
 		// set the graph
 		theGraph = g;
+		dijsktra = new Dijkstra(theGraph);
 		// init grid pane
 		gp = new GridPane();
 		// set grid pane to center
@@ -55,7 +58,7 @@ public class DijsktraView extends BorderPane implements Observer {
 		// make the input text field editable
 		textField.setEditable(true);
 		// create response text
-		functionHeader = new Label("Dijsktra's Shortest Path");
+		functionHeader = new Label("Dijkstra's Shortest Path");
 		responseText = new Label("Enter a Vertex Number to start from");
 		// set grid pane width & height
 		gp.setPrefSize(width, height);
@@ -85,8 +88,9 @@ public class DijsktraView extends BorderPane implements Observer {
 			String text = textField.getText();
 			
 			if (!text.isEmpty() && (Integer.parseInt(text) < 11 && Integer.parseInt(text) > 0)) {
-				
-				responseText.setText("Dijsktra's Shortest Path for Vertex " + text + " -> "); //+ theGraph.DFS(Integer.parseInt(text)));
+				dijsktra = new Dijkstra(theGraph);
+				String result = dijsktra.start(Integer.parseInt(text));
+				responseText.setText("Dijkstra's Shortest Path for Vertex " + text + " -> \n\n" + result); //+ theGraph.DFS(Integer.parseInt(text)));
 				
 			} else {
 				responseText.setText("Please enter a valid vertex number");

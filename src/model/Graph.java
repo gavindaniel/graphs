@@ -57,48 +57,48 @@ public class Graph extends Observable {
 //		v1.addEdge(e1);
 		
 		// vertex 1 adjacent
-		v1.addAdjacentVertex(v2);
-		v1.addAdjacentVertex(v3);
-		v1.addAdjacentVertex(v4);
+		v1.addAdjacentVertex(v2, 1);
+		v1.addAdjacentVertex(v3, 2);
+		v1.addAdjacentVertex(v4, 4);
 		// vertex 2 adjacent
-		v2.addAdjacentVertex(v1);
-		v2.addAdjacentVertex(v3);
-		v2.addAdjacentVertex(v4);
+		v2.addAdjacentVertex(v1, 1);
+		v2.addAdjacentVertex(v3, -2);
+		v2.addAdjacentVertex(v4, 3);
 		// vertex 3 adjacent
-		v3.addAdjacentVertex(v1);
-		v3.addAdjacentVertex(v2);
-		v3.addAdjacentVertex(v4);
+		v3.addAdjacentVertex(v1, 2);
+		v3.addAdjacentVertex(v2, -2);
+		v3.addAdjacentVertex(v4, 2);
 //		v3.addAdjacentVertex(v5);
 		// vertex 4 adjacent
-		v4.addAdjacentVertex(v1);
-		v4.addAdjacentVertex(v2);
-		v4.addAdjacentVertex(v3);
-		v4.addAdjacentVertex(v6);
+		v4.addAdjacentVertex(v1, 4);
+		v4.addAdjacentVertex(v2, 3);
+		v4.addAdjacentVertex(v3, 2);
+		v4.addAdjacentVertex(v6, 2);
 		// vertex 5 adjacent
-		v5.addAdjacentVertex(v6);
-		v5.addAdjacentVertex(v7);
-		v5.addAdjacentVertex(v8);
+		v5.addAdjacentVertex(v6, -3);
+		v5.addAdjacentVertex(v7, -2);
+		v5.addAdjacentVertex(v8, 1);
 //		v5.addAdjacentVertex(v3);
 		// vertex 6 adjacent
-		v6.addAdjacentVertex(v4);
-		v6.addAdjacentVertex(v5);
-		v6.addAdjacentVertex(v7);
+		v6.addAdjacentVertex(v4, 2);
+		v6.addAdjacentVertex(v5, -3);
+		v6.addAdjacentVertex(v7, 1);
 		// vertex 7 adjacent
-		v7.addAdjacentVertex(v5);
-		v7.addAdjacentVertex(v6);
-		v7.addAdjacentVertex(v8);
+		v7.addAdjacentVertex(v5, -2);
+		v7.addAdjacentVertex(v6, 1);
+		v7.addAdjacentVertex(v8, 4);
 		// vertex 8 adjacent
-		v8.addAdjacentVertex(v5);
-		v8.addAdjacentVertex(v7);
-		v8.addAdjacentVertex(v10);
+		v8.addAdjacentVertex(v5, 1);
+		v8.addAdjacentVertex(v7, 4);
+		v8.addAdjacentVertex(v10, 2);
 		// vertex 9 adjacent
-		v9.addAdjacentVertex(v8);
-		v9.addAdjacentVertex(v10);
+		v9.addAdjacentVertex(v8, 1);
+		v9.addAdjacentVertex(v10, 3);
 		// vertex 10 adjacent
-		v10.addAdjacentVertex(v8);
-		v10.addAdjacentVertex(v9);
+		v10.addAdjacentVertex(v8, 2);
+		v10.addAdjacentVertex(v9, 3);
 		
-		
+		// add vertices to graph
 		g.add(v1);
 		g.add(v2);
 		g.add(v3);

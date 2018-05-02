@@ -24,14 +24,14 @@ public class Vertex {
 	// getters
 	public int getVertexNumber() {	return vertexNumber;		}
 	public Vertex[] getAdjacentVertices() { return adjacent;	}
-//	public Edge[] getEdges() {		return edges;			}
+	public int[] getWeights() {		return weights;			}
 	// setters
 	public void setVertexNumber(int n) {		this.vertexNumber = n;	}
 	public void setAdjacentVertices(Vertex[] v) {  this.adjacent = v; }
 //	public void setEdges(Edge[] e) {			this.edges = e;			}
 	
 	// edge array functions
-	public void addAdjacentVertex(Vertex v) {
+	public void addAdjacentVertex(Vertex v, int weight) {
 		// check if the vertex is already in the array
 		if (checkForAdjacentVertex(v)) { // if it does already exist in the array
 			System.out.println("Error!! This vertex is already in the adjacent array!!");
@@ -40,7 +40,7 @@ public class Vertex {
 //			 check if this is the first edge in the array
 			if (adjacent.length == 0) {
 				adjacent = new Vertex[] {v};
-				weights = new int[] {1};
+				weights = new int[] {weight};
 			}
 			else { // the array is not empty
 				Vertex[] temp = adjacent;
@@ -52,7 +52,7 @@ public class Vertex {
 					weights[i] = tempW[i];
 				}
 				adjacent[temp.length] = v; // add the new vertex at the very end 
-				weights[tempW.length] = 1; 	// FIXME: 
+				weights[tempW.length] = weight; 	// add the new weight at the very end
 			}
 		}
 	}

@@ -14,7 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 //import model.Edge;
 import model.Graph;
-import view.DijsktraView;
+import view.DijkstraView;
 import view.FloydView;
 import view.BFSView;
 import view.DFSView;
@@ -33,7 +33,7 @@ public class Main extends Application {
 	private BorderPane window;
 	private MenuBar menuBar;
 	// static variables 
-	public static final int width = 500;
+	public static final int width = 800;
 	public static final int height = 500;
 	
 	public static void main(String[] args) {
@@ -55,7 +55,7 @@ public class Main extends Application {
 		// create a new model
 		theGraph = Graph.graph1();
 		// create  view(s)
-		dijsktraView = new DijsktraView(theGraph);
+		dijsktraView = new DijkstraView(theGraph);
 		BFSView = new BFSView(theGraph);
 		DFSView = new DFSView(theGraph);
 		floydView = new FloydView(theGraph);
@@ -77,7 +77,7 @@ public class Main extends Application {
 		// create the menu
 		Menu menu = new Menu("Options");
 		// add menu item(s) to menu
-		menu.getItems().addAll(bfsMI, dfsMI, dijsktraMI, floydMI, exitMI);
+		menu.getItems().addAll(bfsMI, dfsMI, dijsktraMI, exitMI); // floydMI,
 		// create menu bar
 		menuBar = new MenuBar();
 		// add menu to menu bar

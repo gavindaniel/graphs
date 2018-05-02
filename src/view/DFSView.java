@@ -25,7 +25,7 @@ public class DFSView extends BorderPane implements Observer {
 	private Label responseText;
 	private Label functionHeader;
 	// static variable(s)
-	public static final int width = 500;
+	public static final int width = 700;
 	public static final int height = 400;
 	
 	@Override
